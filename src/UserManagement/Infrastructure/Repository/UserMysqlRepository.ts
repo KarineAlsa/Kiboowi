@@ -99,7 +99,29 @@ export default class UserMysqlRepository implements UserInterface {
       const [[result]]: any = await query(sql, params);
           
       if (result){
-        return {id:result.id,name:result.name, lastName: result.lastName, email:result.email, type:result.type};
+        const birthday=result.birthday.toISOString().slice(0, 10);
+        const createDate = result.createDate.toISOString().slice(0, 10);
+        const books=await this.getStatistics(id);
+
+        return {id:result.id,name:result.name, username: result.username, email:result.email, birthday:birthday,createDate:createDate, books:books};
+      }
+      else {
+        return false;
+      }
+    }catch (error) {
+        return false;
+      }
+  }
+
+  async getStatistics(id: string): Promise<any> {
+    const sql = "SELECT state, COUNT(*) AS total_books FROM UserBook WHERE idUser = ? GROUP BY state;";
+    const params: any[] = [id];
+    try {
+      const [result]: any = await query(sql, params);
+          console.log(result)
+          return {por_leer:result[0].total_books,leidos:result[1].total_books,leyendo:result[2].total_books};
+      if (result){
+        return 1;
       }
       else {
         return false;
