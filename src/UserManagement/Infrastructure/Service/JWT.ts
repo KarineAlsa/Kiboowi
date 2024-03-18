@@ -25,7 +25,7 @@ export class JWTS implements AuthServices {
   }
 
   generateToken(id: string): string {
-    return jwt.sign({ id }, this.key, { expiresIn: '1h' });
+    return jwt.sign(id, this.key, { expiresIn: '1h' });
   }
 
 
