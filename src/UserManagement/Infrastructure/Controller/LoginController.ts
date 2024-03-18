@@ -1,12 +1,16 @@
 import { Request, Response } from "express";
 import  LoginUserCase  from "../../Application/UseCase/LoginUserUseCase";
+import {AuthServices} from "../../Domain/Service/AuthService";
 export default class LoginController {
 
-    constructor(readonly useCase:LoginUserCase){}
+    constructor(readonly useCase:LoginUserCase, readonly auth:AuthServices){}
 
     async run(request:Request,response:Response) {
         const { email,password} = request.body;
         const mail = email;
+
+        
+        
         if (!mail || !password ) {
             return response.status(400).json({
                 message: "Debe completar todos los campos.",
@@ -36,11 +40,11 @@ export default class LoginController {
                 .status(200)
                 .json({
                     data: orderItem,
+                    token: this.auth.generateToken(orderItem),
                     message:"Login exitoso", 
                     success:true});
             }
             
-           
 
         }catch(error:any) {
             response.status(error.http_status ?? 500)
