@@ -4,6 +4,23 @@ import bcrypt, { hashSync } from 'bcrypt'
 import query from "../../../Database/mysql";
 
 export default class UserMysqlRepository implements UserInterface {
+  async searchUserReadingBooks(id: string): Promise<any> {
+    const sql = "SELECT * FROM UserBook WHERE idUser = ? AND state = 2";
+    const params: any[] = [id];
+    try {
+      const [result]: any = await query(sql, params);
+      console.log(result)
+      if (result){
+        return result
+      }
+      else {
+        false
+      }
+    }
+    catch (error) {
+      false
+    }
+  }
   getOrdersByUserId(id: string): Promise<any> {
     throw new Error("Method not implemented.");
   }
@@ -138,7 +155,7 @@ export default class UserMysqlRepository implements UserInterface {
       const [[result]]: any = await query(sql, params);
         
       if (result){
-        
+        console.log(bcrypt.compareSync(password, result.password), password, result.password)
         if(bcrypt.compareSync(password, result.password) == true){
             const birthday=result.birthday.toISOString().slice(0, 10);
             const createDate = result.createDate.toISOString().slice(0, 10);
