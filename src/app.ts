@@ -3,11 +3,13 @@ import dotenv from 'dotenv'
 import path from 'path';
 import { exec } from 'child_process';
 import userRouter from "./UserManagement/Infrastructure/Route/UserRoute";
+import userBookRouter from "./UserBookManagement/Infrastructure/Routes/UserBookRoutes";
 dotenv.config()
 const server = express();
 const server_port =process.env.PORT;
 server.use(express.json());
 server.use('/user', userRouter);
+server.use('/user-book', userBookRouter);
 
 server.listen(process.env.PORT, () => {
     console.log(`Server listening on http://localhost:${server_port}/`);
@@ -24,3 +26,5 @@ migrationProcess.on('exit', (code: number) => {
         console.error('Error durante la migración');
     }
 });
+
+export default server;
