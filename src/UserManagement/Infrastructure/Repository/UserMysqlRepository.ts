@@ -2,25 +2,11 @@ import { User } from "../../Domain/Entity/User";
 import UserInterface  from "../../Domain/Port/UserInterface";
 import bcrypt, { hashSync } from 'bcrypt'
 import query from "../../../Database/mysql";
+import { UserBook } from "../../../UserBookManagement/Domain/Entity/UserBook";
 
 export default class UserMysqlRepository implements UserInterface {
-  async searchUserReadingBooks(id: string): Promise<any> {
-    const sql = "SELECT * FROM UserBook WHERE idUser = ? AND state = 2";
-    const params: any[] = [id];
-    try {
-      const [result]: any = await query(sql, params);
-      console.log(result)
-      if (result){
-        return result
-      }
-      else {
-        false
-      }
-    }
-    catch (error) {
-      false
-    }
-  }
+  
+  
   getOrdersByUserId(id: string): Promise<any> {
     throw new Error("Method not implemented.");
   }
