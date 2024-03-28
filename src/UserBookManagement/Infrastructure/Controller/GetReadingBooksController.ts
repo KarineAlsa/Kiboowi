@@ -8,12 +8,12 @@ export default class GetReadingBooksController {
 
     async run(request:Request,response:Response) {
 
-        const id = request.params.id
-        if (id != ""  ){
+        const idUser = request.params.idUser
+        if (idUser != ""  ){
 
         try {
             
-            let result = await this.useCase.run(id);
+            let result = await this.useCase.run(idUser);
             if (result) {
                 
                 return response.status(200).json({data:result,message:"Libros actuales obtenidos",success:true});
