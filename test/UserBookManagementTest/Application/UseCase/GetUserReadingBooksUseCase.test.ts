@@ -25,10 +25,13 @@ describe('GetReadingBooksByUserId', () => {
     ];
 
     const mockRepository: UserBookInterface = {
-        searchUserReadingBooks: jest.fn().mockResolvedValueOnce(expectedUserBooks),
-        addBookToUser: function (userBook: UserBook): Promise<any> {
-            throw new Error('Function not implemented.');
-        }
+      searchUserReadingBooks: jest.fn().mockResolvedValueOnce(expectedUserBooks),
+      addBookToUser: function (userBook: UserBook): Promise<any> {
+        throw new Error('Function not implemented.');
+      },
+      searchUserToReadBooks: function (id: string): Promise<any> {
+        throw new Error('Function not implemented.');
+      }
     };
 
     const getReadingBooksByUserId = new GetReadingBooksByUserId(mockRepository);
