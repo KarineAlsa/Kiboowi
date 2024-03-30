@@ -6,10 +6,13 @@ describe('AddBookUserUseCase', () => {
   it('should add a book to user', async () => {
     // Arrange
     const mockRepository: UserBookInterface = {
-        addBookToUser: jest.fn().mockResolvedValueOnce('Book added successfully'),
-        searchUserReadingBooks: function (id: string): Promise<any> {
-            throw new Error('Function not implemented.');
-        }
+      addBookToUser: jest.fn().mockResolvedValueOnce('Book added successfully'),
+      searchUserReadingBooks: function (id: string): Promise<any> {
+        throw new Error('Function not implemented.');
+      },
+      searchUserToReadBooks: function (id: string): Promise<any> {
+        throw new Error('Function not implemented.');
+      }
     };
 
     const addBookUserUseCase = new AddBookUserUseCase(mockRepository);

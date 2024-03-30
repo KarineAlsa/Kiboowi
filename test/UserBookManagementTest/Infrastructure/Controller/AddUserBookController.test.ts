@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import AddUserBookController from "../../../../src/UserBookManagement/Infrastructure/Controller/AddUserBookController";
 import AddUserBookUseCase from "../../../../src/UserBookManagement/Application/UseCase/AddUserBookUseCase";
-import { currentRepository } from "../Dependencies";
+import { currentRepository } from "../../../../src/UserBookManagement/Infrastructure/Dependencies";
 
 describe('AddUserBookController', () => {
     

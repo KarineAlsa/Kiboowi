@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import GetReadingBooksController from "../../../../src/UserBookManagement/Infrastructure/Controller/GetReadingBooksController";
 import GetReadingBooksUseCase from "../../../../src/UserBookManagement/Application/UseCase/GetUserReadingBooksUseCase";
-import { currentRepository } from "../Dependencies";
+import { currentRepository } from "../../../../src/UserBookManagement/Infrastructure/Dependencies";
 
 const mockUseCase: GetReadingBooksUseCase = {
     run: jest.fn(),
