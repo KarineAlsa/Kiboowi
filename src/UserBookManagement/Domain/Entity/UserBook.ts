@@ -7,6 +7,10 @@ export class UserBook {
     public bookName:string;
     public authorName:string;
     public imageUrl:string;
+    public initialDate?:string;
+    public finishDate?:string;
+    public notes?:string;
+    public reaction?:string;
     public id?:number
 
     constructor(
@@ -16,6 +20,10 @@ export class UserBook {
         bookName:string,
         authorName:string,
         imageUrl:string,
+        initialDate?:string,
+        finishDate?:string,
+        notes?:string,
+        reaction?:string,
         id?:number
     ) {
        
@@ -25,6 +33,10 @@ export class UserBook {
         this.bookName = bookName;
         this.authorName = authorName;
         this.imageUrl = imageUrl;
+        this.initialDate = initialDate;
+        this.finishDate = finishDate;
+        this.notes = notes;
+        this.reaction = reaction;
         this.id = id;
     }
 
@@ -49,5 +61,18 @@ export class UserBook {
     public getImageUrl(){
         return this.imageUrl;
     }
+    public getInitialDate(){
+        return this.initialDate;
+    }
+    public getFinishDate(){
+        return this.finishDate;
+    }
+    public getNotes(){
+        return this.notes;
+    }
+    public getReaction(){
+        return this.reaction;
+    }
+    
 
 }
