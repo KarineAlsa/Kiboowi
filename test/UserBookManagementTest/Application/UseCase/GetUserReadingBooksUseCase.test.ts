@@ -9,7 +9,7 @@ describe('GetReadingBooksByUserId', () => {
         new UserBook(
             1,
             1,
-            1,
+            2,
             'Book 1',
             'Author 1',
             'image1.jpg'
@@ -17,7 +17,7 @@ describe('GetReadingBooksByUserId', () => {
           new UserBook(
             2,
             1,
-            1,
+            2,
             'Book 2',
             'Author 2',
             'image2.jpg'
@@ -30,6 +30,9 @@ describe('GetReadingBooksByUserId', () => {
         throw new Error('Function not implemented.');
       },
       searchUserToReadBooks: function (id: string): Promise<any> {
+        throw new Error('Function not implemented.');
+      },
+      searchUserReadBooks: function (id: string): Promise<any> {
         throw new Error('Function not implemented.');
       }
     };

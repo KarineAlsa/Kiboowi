@@ -12,6 +12,9 @@ describe('AddBookUserUseCase', () => {
       },
       searchUserToReadBooks: function (id: string): Promise<any> {
         throw new Error('Function not implemented.');
+      },
+      searchUserReadBooks: function (id: string): Promise<any> {
+        throw new Error('Function not implemented.');
       }
     };
 
