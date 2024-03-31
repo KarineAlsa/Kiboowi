@@ -74,7 +74,7 @@ describe('UserBookRouter', () => {
     
     const response = await request(app)
       .put('/user-book/update-book/24')
-      .set('Authorization', Bearer ${token})
+      .set('Authorization', `Bearer ${token}`)
       .send({
         initialDate: "2024-03-01",
         finishDate: "2024-03-30",
