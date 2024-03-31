@@ -69,4 +69,24 @@ describe('UserBookRouter', () => {
     expect(response.body.data.length).toBeGreaterThan(0); 
   });
 
+  it('responds with status 200 and a meesage of updated', async () => {
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IkthcmluZSBBbGNhemFyIFNhcm1pZW50byIsInVzZXJuYW1lIjoia2FyaW5lYWxzYSIsImVtYWlsIjoiMjEzMzQwQGRzLnVwY2hpYXBhcy5lZHUubXgiLCJiaXJ0aGRheSI6IjIwMDItMTEtMjkiLCJjcmVhdGVEYXRlIjoiMjAyNC0wMy0xOCIsImlhdCI6MTcxMTgzNjYyMSwiZXhwIjoxNzExODQwMjIxfQ.Mg2-qfUq3gz90PsCbexqPPcVIdG3AHuUBCWhgC0JqrQ';
+    
+    const response = await request(app)
+      .put('/user-book/update-book/24')
+      .set('Authorization', Bearer ${token})
+      .send({
+        initialDate: "2024-03-01",
+        finishDate: "2024-03-30",
+        notes: "muy buen libro",
+        reaction:"emote_happy.png"
+
+      });
+
+    expect(response.status).toBe(200);
+    expect(response.body.success).toBe(true);
+    expect(response.body.message).toBe('Libro de usuario actualizado');
+    expect(response.body.data).toBe(true);
+  });
+  
 });
