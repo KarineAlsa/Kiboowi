@@ -43,7 +43,7 @@ export default class UserMysqlRepository implements UserBookInterface {
     const params: any[] = [id];
     try {
       const [result]: any = await query(sql, params);
-      console.log(result)
+      
       if (result){
         return result
       }
@@ -61,7 +61,7 @@ export default class UserMysqlRepository implements UserBookInterface {
     const params: any[] = [id];
     try {
       const [result]: any = await query(sql, params);
-      console.log(result)
+      
       if (result){
         return result
       }
@@ -80,7 +80,7 @@ export default class UserMysqlRepository implements UserBookInterface {
     const params: any[] = [userBook.getIdBook(), userBook.getIdUser(), userBook.getState(), userBook.getBookName(), userBook.getAuthorName(), userBook.getImageUrl()];
     try {
       const [result]: any = await query(sql, params);
-      console.log(result);
+      
 
     if (result) {
       userBook.id = result.insertId;
@@ -99,7 +99,6 @@ export default class UserMysqlRepository implements UserBookInterface {
     const params: any[] = [id];
     try {
       const [result]: any = await query(sql, params);
-      console.log(result)
       if (result){
         return result
       }
