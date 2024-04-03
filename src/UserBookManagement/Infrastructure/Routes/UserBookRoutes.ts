@@ -1,5 +1,12 @@
 import { VerifyToken } from "../Controller/Middleware/VerifyToken";
-import { addUserBookController, getReadingBooksController, getToReadBooksController, getReadBooksController, updateUserBookController } from "../Dependencies";
+import { 
+    addUserBookController, 
+    getReadingBooksController, 
+    getToReadBooksController, 
+    getReadBooksController, 
+    updateUserBookController,
+    getUserBookController 
+} from "../Dependencies";
 import  express  from "express";
 const userBookRouter = express.Router();
 
@@ -8,5 +15,6 @@ userBookRouter.get("/reading-books/",VerifyToken,getReadingBooksController.run.b
 userBookRouter.get("/to-read-books/",VerifyToken,getToReadBooksController.run.bind(getToReadBooksController));
 userBookRouter.get("/read-books/",VerifyToken,getReadBooksController.run.bind(getReadBooksController));
 userBookRouter.put("/update-book/:idUserBook",VerifyToken,updateUserBookController.run.bind(updateUserBookController));
+userBookRouter.put("/:idUserBook",VerifyToken,getUserBookController.run.bind(getUserBookController));
 
 export default userBookRouter;

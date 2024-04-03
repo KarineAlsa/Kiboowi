@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import GetReadBooksController from "../../../../src/UserBookManagement/Infrastructure/Controller/GetReadBooksController";
-import GetReadBooksUseCase from "../../../../src/UserBookManagement/Application/UseCase/GetUserReadBooksUseCase";
+import GetUserBookController from "../../../../src/UserBookManagement/Infrastructure/Controller/GetUserBookController";
+import GetReadBooksUseCase from "../../../../src/UserBookManagement/Application/UseCase/GetUserBookUseCase";
 import { currentRepository } from "../../../../src/UserBookManagement/Infrastructure/Dependencies";
 
 const mockUseCase: GetReadBooksUseCase = {
@@ -9,12 +9,13 @@ const mockUseCase: GetReadBooksUseCase = {
 };
 
 
-const controller = new GetReadBooksController(mockUseCase);
+const controller = new GetUserBookController(mockUseCase);
 
 
 const mockRequest: Partial<Request> = {
     params: {
-        idUser: '3'
+        idUser: '3',
+        idUserBook: '24'
     }
 };
 const mockResponse: Partial<Response> = {
@@ -22,10 +23,10 @@ const mockResponse: Partial<Response> = {
     json: jest.fn()
 } as unknown as Response;
 
-describe('GetReadingBooksController', () => {
-    it('should return 200 with books data when a valid ID is provided', async () => {
+describe('GeUserBooksController', () => {
+    it('should return 200 with user books data when a valid ID is provided', async () => {
         
-        const mockResult = [
+        const mockResult = 
             {
                 id: 24,
                 idBook: 24,
@@ -33,20 +34,12 @@ describe('GetReadingBooksController', () => {
                 state: 2,
                 bookName: "El arte de la guerra",
                 authorName: "Sun Tzu",
-                imageUrl: "https://www.oceano.mx/img/obra/media/19196.jpg"
-            },
-            {
-                id: 25,
-                idBook: 25,
-                idUser: 3,
-                state: 2,
-                bookName: "El libro de la selva",
-                authorName: "Rudyard Kipling",
-                imageUrl: "https://m.media-amazon.com/images/I/912jSVZE5LL._AC_UF894,1000_QL80_.jpg"
-            },
-           
-        ];
-
+                imageUrl: "https://www.oceano.mx/img/obra/media/19196.jpg",
+                initialDate: "2021-10-10",
+                finishDate: "2021-10-10",
+                notes: "Muy buen libro",
+                reaction: 'emote_happy.jpg'
+            };
         (mockUseCase.run as jest.Mock).mockResolvedValueOnce(mockResult);
 
         
@@ -56,7 +49,7 @@ describe('GetReadingBooksController', () => {
         expect(mockResponse.status).toHaveBeenCalledWith(200);
         expect(mockResponse.json).toHaveBeenCalledWith({
             data: mockResult,
-            message: "Libros leídos obtenidos",
+            message: "Información del libro obtenido",
             success: true
         });
     });
