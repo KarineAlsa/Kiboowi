@@ -7,7 +7,7 @@ import query from "../../../Database/mysql";
 export default class UserMysqlRepository implements UserInterface {  
   
   async updateUser(id: string, updateFields:any): Promise<any> {
-    let updateQuery = "UPDATE users SET ";
+    let updateQuery = "UPDATE Users SET ";
     const params: any[] = [];
     Object.entries(updateFields).forEach(([key, value]) => {
       if(key=="password"){
@@ -38,7 +38,7 @@ export default class UserMysqlRepository implements UserInterface {
   }
 
   async listAll(): Promise<any> {
-    const sql = "SELECT * FROM users";
+    const sql = "SELECT * FROM Users";
     const params: any[] = [];
     try {
       const [result]: any = await query(sql, params);
@@ -56,7 +56,7 @@ export default class UserMysqlRepository implements UserInterface {
   }
 
   async deleteUser(id: string): Promise<any> {
-    const sql = "DELETE FROM users WHERE id = ?";
+    const sql = "DELETE FROM Users WHERE id = ?";
     const params: any[] = [id];
     try {
       const [result]: any = await query(sql, params);
@@ -92,7 +92,7 @@ export default class UserMysqlRepository implements UserInterface {
   }
 
   async searchUserById(id: string): Promise<any> {
-    const sql = "SELECT * FROM users WHERE id = ?";
+    const sql = "SELECT * FROM Users WHERE id = ?";
     const params: any[] = [id];
     try {
       const [[result]]: any = await query(sql, params);
