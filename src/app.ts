@@ -27,4 +27,5 @@ migrationProcess.on('exit', (code: number) => {
     }
 });
 
+
 export default server;
