@@ -79,5 +79,31 @@ export default class UserMysqlRepository implements UserBookInterface {
     }
   }
   
-  
+  async updateUserBook(idUser:number,idUserBook:number, updateFields:any): Promise<any> {
+    let updateQuery = "UPDATE UserBook SET ";
+    const params: any[] = [];
+    Object.entries(updateFields).forEach(([key, value]) => {
+      if(key=="initialDate" || key=="finishDate"){
+        value = new Date(value as string).toISOString().slice(0, 10); 
+      }
+      updateQuery += `${key} = ?, `;
+      params.push(value);
+    });
+    updateQuery = updateQuery.slice(0, -2);
+    updateQuery += " WHERE id = ? and idUser = ?";
+    params.push(idUserBook);
+    params.push(idUser);
+    try {
+      const [result]: any = await query(updateQuery, params);
+
+      if (result && result.affectedRows > 0) {
+        return true
+      } else {
+        return false
+      }
+    } catch (error) {
+      return false
+    }
+
+  }
 }
