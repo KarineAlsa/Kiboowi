@@ -4,7 +4,7 @@ import app from '../../../../src/app';
 
 describe('UserBookRouter', () => {
   it('responds with status 200 and a list of reading books', async () => {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IkthcmluZSBBbGNhemFyIFNhcm1pZW50byIsInVzZXJuYW1lIjoia2FyaW5lYWxzYSIsImVtYWlsIjoiMjEzMzQwQGRzLnVwY2hpYXBhcy5lZHUubXgiLCJiaXJ0aGRheSI6IjIwMDItMTEtMjkiLCJjcmVhdGVEYXRlIjoiMjAyNC0wMy0xOCIsImlhdCI6MTcxMjEwODQwNywiZXhwIjoxNzEyMTEyMDA3fQ.4aS_rxUh_dvbeqE4Yd2Y1PQb06ccy1A9J47ptKgo4b8';
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IkthcmluZSBBbGNhemFyIFNhcm1pZW50byIsInVzZXJuYW1lIjoia2FyaW5lYWxzYSIsImVtYWlsIjoiMjEzMzQwQGRzLnVwY2hpYXBhcy5lZHUubXgiLCJiaXJ0aGRheSI6IjIwMDItMTEtMjkiLCJjcmVhdGVEYXRlIjoiMjAyNC0wMy0xOCIsImlhdCI6MTcxMjExNjgwOCwiZXhwIjoxNzEyMTIwNDA4fQ.v6oy9u9p4n9GMSbFFep7emVdae4OGr-vPU8C8U4u6Ao';
     
     const response = await request(app)
       .get('/user-book/reading-books')
@@ -18,8 +18,9 @@ describe('UserBookRouter', () => {
     expect(response.body.data.length).toBeGreaterThan(0); 
   });
 
+
   it('responds with status 200 and success message after adding a book', async () => {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IkthcmluZSBBbGNhemFyIFNhcm1pZW50byIsInVzZXJuYW1lIjoia2FyaW5lYWxzYSIsImVtYWlsIjoiMjEzMzQwQGRzLnVwY2hpYXBhcy5lZHUubXgiLCJiaXJ0aGRheSI6IjIwMDItMTEtMjkiLCJjcmVhdGVEYXRlIjoiMjAyNC0wMy0xOCIsImlhdCI6MTcxMjEwODQwNywiZXhwIjoxNzEyMTEyMDA3fQ.4aS_rxUh_dvbeqE4Yd2Y1PQb06ccy1A9J47ptKgo4b8';
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IkthcmluZSBBbGNhemFyIFNhcm1pZW50byIsInVzZXJuYW1lIjoia2FyaW5lYWxzYSIsImVtYWlsIjoiMjEzMzQwQGRzLnVwY2hpYXBhcy5lZHUubXgiLCJiaXJ0aGRheSI6IjIwMDItMTEtMjkiLCJjcmVhdGVEYXRlIjoiMjAyNC0wMy0xOCIsImlhdCI6MTcxMjExNjgwOCwiZXhwIjoxNzEyMTIwNDA4fQ.v6oy9u9p4n9GMSbFFep7emVdae4OGr-vPU8C8U4u6Ao';
 
     const response = await request(app)
       .post('/user-book/add-book')
@@ -40,7 +41,7 @@ describe('UserBookRouter', () => {
   });  
 
   it('responds with status 200 and a list of to read books', async () => {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IkthcmluZSBBbGNhemFyIFNhcm1pZW50byIsInVzZXJuYW1lIjoia2FyaW5lYWxzYSIsImVtYWlsIjoiMjEzMzQwQGRzLnVwY2hpYXBhcy5lZHUubXgiLCJiaXJ0aGRheSI6IjIwMDItMTEtMjkiLCJjcmVhdGVEYXRlIjoiMjAyNC0wMy0xOCIsImlhdCI6MTcxMjEwODQwNywiZXhwIjoxNzEyMTEyMDA3fQ.4aS_rxUh_dvbeqE4Yd2Y1PQb06ccy1A9J47ptKgo4b8';
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IkthcmluZSBBbGNhemFyIFNhcm1pZW50byIsInVzZXJuYW1lIjoia2FyaW5lYWxzYSIsImVtYWlsIjoiMjEzMzQwQGRzLnVwY2hpYXBhcy5lZHUubXgiLCJiaXJ0aGRheSI6IjIwMDItMTEtMjkiLCJjcmVhdGVEYXRlIjoiMjAyNC0wMy0xOCIsImlhdCI6MTcxMjExNjgwOCwiZXhwIjoxNzEyMTIwNDA4fQ.v6oy9u9p4n9GMSbFFep7emVdae4OGr-vPU8C8U4u6Ao';
     
     const response = await request(app)
       .get('/user-book/to-read-books')
@@ -55,7 +56,7 @@ describe('UserBookRouter', () => {
   });
 
   it('responds with status 200 and a list of read books', async () => {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IkthcmluZSBBbGNhemFyIFNhcm1pZW50byIsInVzZXJuYW1lIjoia2FyaW5lYWxzYSIsImVtYWlsIjoiMjEzMzQwQGRzLnVwY2hpYXBhcy5lZHUubXgiLCJiaXJ0aGRheSI6IjIwMDItMTEtMjkiLCJjcmVhdGVEYXRlIjoiMjAyNC0wMy0xOCIsImlhdCI6MTcxMjEwODQwNywiZXhwIjoxNzEyMTEyMDA3fQ.4aS_rxUh_dvbeqE4Yd2Y1PQb06ccy1A9J47ptKgo4b8';
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IkthcmluZSBBbGNhemFyIFNhcm1pZW50byIsInVzZXJuYW1lIjoia2FyaW5lYWxzYSIsImVtYWlsIjoiMjEzMzQwQGRzLnVwY2hpYXBhcy5lZHUubXgiLCJiaXJ0aGRheSI6IjIwMDItMTEtMjkiLCJjcmVhdGVEYXRlIjoiMjAyNC0wMy0xOCIsImlhdCI6MTcxMjExNjgwOCwiZXhwIjoxNzEyMTIwNDA4fQ.v6oy9u9p4n9GMSbFFep7emVdae4OGr-vPU8C8U4u6Ao';
     
     const response = await request(app)
       .get('/user-book/read-books')
@@ -70,7 +71,7 @@ describe('UserBookRouter', () => {
   });
 
   it('responds with status 200 and a meesage of updated', async () => {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IkthcmluZSBBbGNhemFyIFNhcm1pZW50byIsInVzZXJuYW1lIjoia2FyaW5lYWxzYSIsImVtYWlsIjoiMjEzMzQwQGRzLnVwY2hpYXBhcy5lZHUubXgiLCJiaXJ0aGRheSI6IjIwMDItMTEtMjkiLCJjcmVhdGVEYXRlIjoiMjAyNC0wMy0xOCIsImlhdCI6MTcxMjEwODQwNywiZXhwIjoxNzEyMTEyMDA3fQ.4aS_rxUh_dvbeqE4Yd2Y1PQb06ccy1A9J47ptKgo4b8';
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IkthcmluZSBBbGNhemFyIFNhcm1pZW50byIsInVzZXJuYW1lIjoia2FyaW5lYWxzYSIsImVtYWlsIjoiMjEzMzQwQGRzLnVwY2hpYXBhcy5lZHUubXgiLCJiaXJ0aGRheSI6IjIwMDItMTEtMjkiLCJjcmVhdGVEYXRlIjoiMjAyNC0wMy0xOCIsImlhdCI6MTcxMjExNjgwOCwiZXhwIjoxNzEyMTIwNDA4fQ.v6oy9u9p4n9GMSbFFep7emVdae4OGr-vPU8C8U4u6Ao';
     
     const response = await request(app)
       .put('/user-book/update-book/24')
@@ -88,5 +89,17 @@ describe('UserBookRouter', () => {
     expect(response.body.message).toBe('Libro de usuario actualizado');
     expect(response.body.data).toBe(true);
   });
+
+  it('delete an user', async () => {
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6InRlc3QiLCJ1c2VybmFtZSI6InRlc3QiLCJlbWFpbCI6InRlc3QiLCJiaXJ0aGRheSI6IjIwMDMtMTAtMDQiLCJjcmVhdGVEYXRlIjoiMjAyNC0wMy0xOCIsImlhdCI6MTcxMjExODc4MSwiZXhwIjoxNzEyMTIyMzgxfQ.TW4sWA8oFYxOB2zep0TJ16RNrh9V6wRwaftAEGKcDME';
+    
+    const response = await request(app)
+    .delete('/user/delete')
+    .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body.success).toBe(true);
+    expect(response.body.message).toBe('Usuario eliminado');
+});
   
 });

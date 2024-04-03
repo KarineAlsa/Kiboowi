@@ -30,7 +30,6 @@ export default class LoginController {
                 return response
                 .status(200)
                 .json({
-                    data: message,
                     message:"Usuario eliminado", 
                     success:true});
             }

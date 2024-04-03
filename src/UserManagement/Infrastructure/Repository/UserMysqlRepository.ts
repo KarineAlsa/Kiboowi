@@ -42,7 +42,7 @@ export default class UserMysqlRepository implements UserInterface {
     const params: any[] = [];
     try {
       const [result]: any = await query(sql, params);
-      console.log(result)
+      
       if (result){
         return result
       }
@@ -60,12 +60,12 @@ export default class UserMysqlRepository implements UserInterface {
     const params: any[] = [id];
     try {
       const [result]: any = await query(sql, params);
-      console.log(result);
+      
       return result
     }
 
     catch (error) {
-    throw new Error(`Error en la operación de eliminación`);
+      return false
     }
 
   }
@@ -76,7 +76,7 @@ export default class UserMysqlRepository implements UserInterface {
     const params: any[] = [user.name, user.username,user.email,hash,user.birthdayDate,user.createdAt];
     try {
       const [result]: any = await query(sql, params);
-      console.log(result);
+      
 
     if (result) {
       user.id = result.insertId;
@@ -117,10 +117,10 @@ export default class UserMysqlRepository implements UserInterface {
     const params: any[] = [id];
     try {
       const [result]: any = await query(sql, params);
-          console.log(result)
+          
           return {por_leer:result[0].total_books,leidos:result[1].total_books,leyendo:result[2].total_books};
       if (result){
-        return 1;
+        return true;
       }
       else {
         return false;
@@ -137,7 +137,7 @@ export default class UserMysqlRepository implements UserInterface {
       const [[result]]: any = await query(sql, params);
         
       if (result){
-        console.log(bcrypt.compareSync(password, result.password), password, result.password)
+        
         if(bcrypt.compareSync(password, result.password) == true){
             const birthday=result.birthday.toISOString().slice(0, 10);
             const createDate = result.createDate.toISOString().slice(0, 10);
