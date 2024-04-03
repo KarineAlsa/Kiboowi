@@ -1,15 +1,15 @@
 import { Request, Response } from "express";
-import GetReadingBooksController from "../../../../src/UserBookManagement/Infrastructure/Controller/GetReadingBooksController";
-import GetReadingBooksUseCase from "../../../../src/UserBookManagement/Application/UseCase/GetUserReadingBooksUseCase";
+import GetToReadBooksController from "../../../../src/UserBookManagement/Infrastructure/Controller/GetToReadBooksController";
+import GetToReadBooksUseCase from "../../../../src/UserBookManagement/Application/UseCase/GetUserToReadBooksUseCase";
 import { currentRepository } from "../../../../src/UserBookManagement/Infrastructure/Dependencies";
 
-const mockUseCase: GetReadingBooksUseCase = {
+const mockUseCase: GetToReadBooksUseCase = {
     run: jest.fn(),
     userRepository: currentRepository
 };
 
 
-const controller = new GetReadingBooksController(mockUseCase);
+const controller = new GetToReadBooksController(mockUseCase);
 
 
 const mockRequest: Partial<Request> = {
@@ -56,7 +56,7 @@ describe('GetReadingBooksController', () => {
         expect(mockResponse.status).toHaveBeenCalledWith(200);
         expect(mockResponse.json).toHaveBeenCalledWith({
             data: mockResult,
-            message: "Libros actuales obtenidos",
+            message: "Libros por leer obtenidos",
             success: true
         });
     });

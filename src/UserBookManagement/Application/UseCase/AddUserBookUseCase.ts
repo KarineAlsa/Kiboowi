@@ -25,7 +25,7 @@ export default class RegisterUserUseCase {
                 imageUrl  
             );
             const bookuser = await this.repository.addBookToUser(book);
-            console.log(bookuser)
+            
             return bookuser;
              
         }catch(error) {

@@ -1,4 +1,4 @@
-INSERT INTO UserBook (id, idBook, idUser, state, bookName,authorName,imageUrl) VALUES
+INSERT INTO UserBook (id, idBook, idUser, state, bookName,authorName,imageUrl ) VALUES
 (1, 1, 1, 0, 'La ladrona de libros', 'Markus Zusak', ''),
 (2, 2, 1, 0, 'El principito', 'Antoine de Saint-Exupéry', ''),
 (3, 3, 1, 0, 'El señor de los anillos', 'J.R.R. Tolkien', ''),

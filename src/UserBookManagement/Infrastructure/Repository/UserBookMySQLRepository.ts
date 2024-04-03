@@ -4,6 +4,43 @@ import bcrypt, { hashSync } from 'bcrypt'
 import query from "../../../Database/mysql";
 
 export default class UserMysqlRepository implements UserBookInterface {
+
+  async searchUserReadBooks(id: string): Promise<any> {
+    const sql = "SELECT * FROM UserBook WHERE idUser = ? AND state = 1";
+    const params: any[] = [id];
+    try {
+      const [result]: any = await query(sql, params);
+      console.log(result)
+      if (result){
+        return result
+      }
+      else {
+        false
+      }
+    }
+    catch (error) {
+      false
+    }
+  }
+    
+  async searchUserToReadBooks(id: string): Promise<any> {
+    const sql = "SELECT * FROM UserBook WHERE idUser = ? AND state = 0";
+    const params: any[] = [id];
+    try {
+      const [result]: any = await query(sql, params);
+      console.log(result)
+      if (result){
+        return result
+      }
+      else {
+        false
+      }
+    }
+    catch (error) {
+      false
+    }
+  }
+
   async addBookToUser(userBook: UserBook): Promise<any> {
     const sql = "INSERT INTO UserBook (idBook, idUser, state, bookName,authorName,imageUrl) VALUES (?,?,?,?,?,?)";
     
@@ -41,4 +78,6 @@ export default class UserMysqlRepository implements UserBookInterface {
       false
     }
   }
+  
+  
 }

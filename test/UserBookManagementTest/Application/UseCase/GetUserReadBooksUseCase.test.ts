@@ -1,15 +1,15 @@
-import GetReadingBooksByUserId from '../../../../src/UserBookManagement/Application/UseCase/GetUserReadingBooksUseCase';
+import GetReadBooksByUserId from '../../../../src/UserBookManagement/Application/UseCase/GetUserReadBooksUseCase';
 import UserBookInterface from '../../../../src/UserBookManagement/Domain/Port/UserBookInterface';
 import { UserBook } from '../../../../src/UserBookManagement/Domain/Entity/UserBook';
 
-describe('GetReadingBooksByUserId', () => {
-  it('should return a list of books that user is reading', async () => {
+describe('GetReadBooksByUserId', () => {
+  it('should return a list of books that user has already read', async () => {
     // Arrange
     const expectedUserBooks: UserBook[] = [
         new UserBook(
             1,
             1,
-            2,
+            1,
             'Book 1',
             'Author 1',
             'image1.jpg'
@@ -17,7 +17,7 @@ describe('GetReadingBooksByUserId', () => {
           new UserBook(
             2,
             1,
-            2,
+            1,
             'Book 2',
             'Author 2',
             'image2.jpg'
@@ -25,14 +25,14 @@ describe('GetReadingBooksByUserId', () => {
     ];
 
     const mockRepository: UserBookInterface = {
-      searchUserReadingBooks: jest.fn().mockResolvedValueOnce(expectedUserBooks),
+      searchUserReadBooks: jest.fn().mockResolvedValueOnce(expectedUserBooks),
       addBookToUser: function (userBook: UserBook): Promise<any> {
         throw new Error('Function not implemented.');
       },
-      searchUserToReadBooks: function (id: string): Promise<any> {
+      searchUserReadingBooks: function (id: string): Promise<any> {
         throw new Error('Function not implemented.');
       },
-      searchUserReadBooks: function (id: string): Promise<any> {
+      searchUserToReadBooks: function (id: string): Promise<any> {
         throw new Error('Function not implemented.');
       },
       updateUserBook: function (idUser: number, idUserBook: number, updateFields: any): Promise<any> {
@@ -40,15 +40,15 @@ describe('GetReadingBooksByUserId', () => {
       }
     };
 
-    const getReadingBooksByUserId = new GetReadingBooksByUserId(mockRepository);
+    const getToReadBooksByUserId = new GetReadBooksByUserId(mockRepository);
 
     // Act
-    const result = await getReadingBooksByUserId.run('user_id');
+    const result = await getToReadBooksByUserId.run('user_id');
     
 
     // Assert
     expect(result).toEqual(expectedUserBooks);
-    expect(mockRepository.searchUserReadingBooks).toHaveBeenCalledWith('user_id');
+    expect(mockRepository.searchUserReadBooks).toHaveBeenCalledWith('user_id');
   });
 
  
