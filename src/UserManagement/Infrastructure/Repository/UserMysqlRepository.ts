@@ -2,9 +2,9 @@ import { User } from "../../Domain/Entity/User";
 import UserInterface  from "../../Domain/Port/UserInterface";
 import bcrypt, { hashSync } from 'bcrypt'
 import query from "../../../Database/mysql";
-import { UserBook } from "../../../UserBookManagement/Domain/Entity/UserBook";
 
-export default class UserMysqlRepository implements UserInterface {
+
+export default class UserMysqlRepository implements UserInterface {  
   
   async updateUser(id: string, updateFields:any): Promise<any> {
     let updateQuery = "UPDATE users SET ";
@@ -55,7 +55,7 @@ export default class UserMysqlRepository implements UserInterface {
     }
   }
 
-  async delete(id: string): Promise<any> {
+  async deleteUser(id: string): Promise<any> {
     const sql = "DELETE FROM users WHERE id = ?";
     const params: any[] = [id];
     try {
