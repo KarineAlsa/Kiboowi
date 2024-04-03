@@ -37,6 +37,9 @@ describe('GetReadBooksByUserId', () => {
       },
       updateUserBook: function (idUser: number, idUserBook: number, updateFields: any): Promise<any> {
         throw new Error('Function not implemented.');
+      },
+      searchUserBook: function (idUser: number, idUserBook: number): Promise<any> {
+        throw new Error('Function not implemented.');
       }
     };
 

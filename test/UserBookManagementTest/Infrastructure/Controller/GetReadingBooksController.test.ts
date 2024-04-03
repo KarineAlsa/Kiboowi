@@ -14,7 +14,7 @@ const controller = new GetReadingBooksController(mockUseCase);
 
 const mockRequest: Partial<Request> = {
     params: {
-        id: '3'
+        idUser: '3'
     }
 };
 const mockResponse: Partial<Response> = {
