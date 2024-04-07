@@ -4,7 +4,7 @@ import userRepository from "../../Domain/Port/UserBookInterface";
 export default class GetUserToReadBooksUseCase {
     constructor(readonly userRepository: userRepository) {}
 
-    async run(idUser: string): Promise<UserBook | string> {
+    async run(idUser: any): Promise<UserBook | string> {
         try {
         const result = await this.userRepository.searchUserToReadBooks(idUser);
         return result;

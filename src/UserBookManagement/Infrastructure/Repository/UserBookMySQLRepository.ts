@@ -4,7 +4,7 @@ import bcrypt, { hashSync } from 'bcrypt'
 import query from "../../../Database/mysql";
 
 export default class UserMysqlRepository implements UserBookInterface {
-  async searchUserBook(idUser: number, idUserBook: number): Promise<any> {
+  async searchUserBook(idUser: any, idUserBook: string): Promise<any> {
     const sql = "SELECT * FROM UserBook WHERE idUser = ? AND id = ?";
     const params: any[] = [idUser,idUserBook];
     try {
@@ -75,9 +75,9 @@ export default class UserMysqlRepository implements UserBookInterface {
   }
 
   async addBookToUser(userBook: UserBook): Promise<any> {
-    const sql = "INSERT INTO UserBook (idBook, idUser, state, bookName,authorName,imageUrl) VALUES (?,?,?,?,?,?)";
+    const sql = "INSERT INTO UserBook ( idBook, idUser, state, bookName,authorName,imageUrl, initialDate, finishDate, notes, reaction) VALUES (?,?,?,?,?,?,?,?,?,?)";
     
-    const params: any[] = [userBook.getIdBook(), userBook.getIdUser(), userBook.getState(), userBook.getBookName(), userBook.getAuthorName(), userBook.getImageUrl()];
+    const params: any[] = [userBook.getIdBook(), userBook.getIdUser(), userBook.getState(), userBook.getBookName(), userBook.getAuthorName(), userBook.getImageUrl(), userBook.getInitialDate(), userBook.getFinishDate(), userBook.getNotes(), userBook.getReaction()];
     try {
       const [result]: any = await query(sql, params);
       
@@ -111,7 +111,7 @@ export default class UserMysqlRepository implements UserBookInterface {
     }
   }
   
-  async updateUserBook(idUser:number,idUserBook:number, updateFields:any): Promise<any> {
+  async updateUserBook(idUser:any,idUserBook:string, updateFields:any): Promise<any> {
     let updateQuery = "UPDATE UserBook SET ";
     const params: any[] = [];
     Object.entries(updateFields).forEach(([key, value]) => {

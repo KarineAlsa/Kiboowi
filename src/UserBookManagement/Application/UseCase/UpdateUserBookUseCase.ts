@@ -6,7 +6,7 @@ export default class UpdateUserBookUseCase {
 
     constructor(readonly repository:UserBookInterface) {}
 
-    async run(idUser:number,idUserBook:number,updateFields:any):Promise<UserBook|any> {
+    async run(idUser:any,idUserBook:string,updateFields:any):Promise<UserBook|any> {
         try {
 
             return await this.repository.updateUserBook(idUser,idUserBook,updateFields);

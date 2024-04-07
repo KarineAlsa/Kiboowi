@@ -28,7 +28,7 @@ export default class GetReadBooksController {
 
         try {
             
-            let result = await this.useCase.run(Number(idUser),Number(idUserBook));
+            let result = await this.useCase.run(idUser,idUserBook);
             if (result) {
                 
                 return response.status(200).json({data:result,message:"Información del libro obtenido",success:true});

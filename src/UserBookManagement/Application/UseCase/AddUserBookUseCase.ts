@@ -5,13 +5,17 @@ export default class RegisterUserUseCase {
 
     constructor(readonly repository:UserBookInterface) {}
 
-    async run( { idBook, idUser,state, bookName, authorName,imageUrl,}: {
-        idBook: number;
+    async run( { idBook, idUser,state, bookName, authorName,imageUrl, initialDate, finishDate,notes,reaction }: {
+        idBook: string;
         idUser: any;
         state: number;
         bookName: string;
         authorName: string;
         imageUrl: string;
+        initialDate?:string,
+        finishDate?:string,
+        notes?:string,
+        reaction?:string,
        
       } ):Promise<UserBook|any> {
         try {
@@ -22,7 +26,11 @@ export default class RegisterUserUseCase {
                 state,
                 bookName,
                 authorName,
-                imageUrl  
+                imageUrl,
+                initialDate,
+                finishDate,
+                notes,
+                reaction
             );
             const bookuser = await this.repository.addBookToUser(book);
             

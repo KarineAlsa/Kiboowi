@@ -1,8 +1,8 @@
 export class UserBook {
 
 
-    public idBook:number;
-    public idUser:number;
+    public idBook:string;
+    public idUser:any;
     public state:number;
     public bookName:string;
     public authorName:string;
@@ -14,8 +14,8 @@ export class UserBook {
     public id?:number
 
     constructor(
-        idBook:number,
-        idUser:number,
+        idBook:string,
+        idUser:any,
         state:number,
         bookName:string,
         authorName:string,

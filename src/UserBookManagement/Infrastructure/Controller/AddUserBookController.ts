@@ -8,7 +8,7 @@ export default class AddUserBookController {
 
     async run(request:Request,response:Response) {
         
-        const { idBook, state, bookName, authorName, imageUrl } = request.body;
+        const { idBook, state, bookName, authorName, imageUrl, initialDate, finishDate, notes, reaction } = request.body;
         const idUser = request.params.idUser;
         
 
@@ -32,7 +32,11 @@ export default class AddUserBookController {
                 state: state,
                 bookName: bookName,
                 authorName: authorName,
-                imageUrl: imageUrl
+                imageUrl: imageUrl,
+                initialDate: initialDate,
+                finishDate: finishDate,
+                notes: notes,
+                reaction: reaction
             });
             
             

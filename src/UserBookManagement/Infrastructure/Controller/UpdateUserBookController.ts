@@ -29,7 +29,7 @@ export default class UpdateUserBookUseCaseController {
 
         try {
             
-            let userBook = await this.useCase.run(Number(idUser),Number(idUserBook), updateFields);
+            let userBook = await this.useCase.run(idUser,idUserBook, updateFields);
             if (userBook) {
                 
                 return response.status(200).json({data:userBook,message:"Libro de usuario actualizado",success:true});

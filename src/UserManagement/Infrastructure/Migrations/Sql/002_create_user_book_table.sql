@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS UserBook (
     id INT NOT NULL AUTO_INCREMENT,
-    idBook INT NOT NULL,
+    idBook VARCHAR(500) NOT NULL,
     idUser INT NOT NULL,
     state INT NOT NULL,
     bookName VARCHAR(500) NOT NULL,

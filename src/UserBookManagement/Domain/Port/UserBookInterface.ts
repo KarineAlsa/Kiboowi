@@ -5,6 +5,6 @@ export default interface UserBookInterface{
     addBookToUser(userBook:UserBook):Promise<any>;
     searchUserToReadBooks(id:string):Promise<any>;
     searchUserReadBooks(id:string):Promise<any>;
-    updateUserBook(idUser:number,idUserBook:number,updateFields:any):Promise<any>;
-    searchUserBook(idUser:number,idUserBook:number):Promise<any>;
+    updateUserBook(idUser:any,idUserBook:string,updateFields:any):Promise<any>;
+    searchUserBook(idUser:any,idUserBook:string):Promise<any>;
 }

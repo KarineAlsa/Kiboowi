@@ -79,8 +79,15 @@ export default class UserMysqlRepository implements UserInterface {
       
 
     if (result) {
-      user.id = result.insertId;
-      return user
+
+      return {
+        id: result.insertId, 
+        name: user.name, 
+        username: user.username, 
+        email: user.email, 
+        birthday: user.birthdayDate, 
+        createDate: user.createdAt
+      }
 
     } else {
       throw new Error("Error al insertar el usuario en la base de datos");
