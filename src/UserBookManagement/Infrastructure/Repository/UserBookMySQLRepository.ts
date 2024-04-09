@@ -39,7 +39,7 @@ export default class UserMysqlRepository implements UserBookInterface {
   }
 
   async searchUserReadBooks(id: string): Promise<any> {
-    const sql = "SELECT * FROM UserBook WHERE idUser = ? AND state = 1";
+    const sql = "SELECT * FROM UserBook WHERE idUser = ? AND state = 2";
     const params: any[] = [id];
     try {
       const [result]: any = await query(sql, params);
@@ -57,7 +57,7 @@ export default class UserMysqlRepository implements UserBookInterface {
   }
     
   async searchUserToReadBooks(id: string): Promise<any> {
-    const sql = "SELECT * FROM UserBook WHERE idUser = ? AND state = 0";
+    const sql = "SELECT * FROM UserBook WHERE idUser = ? AND state = 1";
     const params: any[] = [id];
     try {
       const [result]: any = await query(sql, params);
@@ -95,7 +95,7 @@ export default class UserMysqlRepository implements UserBookInterface {
     }
   }
   async searchUserReadingBooks(id: string): Promise<any> {
-    const sql = "SELECT * FROM UserBook WHERE idUser = ? AND state = 2";
+    const sql = "SELECT * FROM UserBook WHERE idUser = ? AND state = 3";
     const params: any[] = [id];
     try {
       const [result]: any = await query(sql, params);
